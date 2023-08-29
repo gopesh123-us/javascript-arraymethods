@@ -53,3 +53,20 @@ const totalNameCharacters = characters.reduce((acc, cur) => {
   return acc + cur.name.length;
 }, 0);
 console.log(totalNameCharacters);
+
+const initialValue = 0;
+const numbers = [5, 10, 15];
+const reducer = (acc, cur) => {
+  return acc + cur;
+};
+
+const total = numbers.reduce(reducer, initialValue);
+console.log(total);
+
+const startingValue = "Names: ";
+const names = ["Gopesh", "Bhupesh", "Vaishali", "Kirti", "Shekhar"];
+const reducerone = (greetings, curr) => {
+  return (greetings = greetings + " " + curr);
+};
+const results = names.reduce(reducerone, startingValue);
+console.log(results);

@@ -39,17 +39,7 @@ console.log(totalMass);
 const totalHeight = characters.reduce((acc, cur) => acc + cur.height, 0);
 console.log(totalHeight);
 
-//3. Get total number of characters by eye color
-const totalEyeColor = characters.reduce((acc, cur) => {
-  if (cur.eye_color == "blue") {
-    acc++;
-  }
-  return acc;
-}, {});
-console.log(totalEyeColor);
-
 //4. Get total number of characters in all the character names
-
 
 const initialValue = 0;
 const numbers = [5, 10, 15];
@@ -110,3 +100,35 @@ const getMapFromArray = (data) => {
 };
 
 console.log(getMapFromArray(pokemon));
+
+//exercies
+//3. Get total number of characters by eye color
+console.log("EXERCISE-3");
+
+const initObj = {};
+const mycharacters = characters;
+const maptoArray = (acc, cur) => {
+  if (acc[cur.eye_color]) {
+    acc[cur.eye_color]++;
+  } else {
+    acc[cur.eye_color] = 1;
+  }
+  return acc;
+};
+const finalMap = mycharacters.reduce(maptoArray, initObj);
+console.log(finalMap);
+
+//4. Get total number of characters in all the character names
+console.log("EXERCISE-4a");
+
+const initialVal = {};
+const totalcharacterreducer = (acc, item) => {
+  acc[item.name] = item.name.length;
+  return acc;
+};
+const totalchars = mycharacters.reduce(totalcharacterreducer, {});
+console.log(totalchars);
+
+console.log("EXERCISE-4b");
+const sumofchars = mycharacters.reduce((acc, item) => acc + item.name.length, 0);
+console.log(sumofchars);

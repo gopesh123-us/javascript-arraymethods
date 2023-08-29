@@ -49,10 +49,7 @@ const totalEyeColor = characters.reduce((acc, cur) => {
 console.log(totalEyeColor);
 
 //4. Get total number of characters in all the character names
-const totalNameCharacters = characters.reduce((acc, cur) => {
-  return acc + cur.name.length;
-}, 0);
-console.log(totalNameCharacters);
+
 
 const initialValue = 0;
 const numbers = [5, 10, 15];
@@ -70,3 +67,46 @@ const reducerone = (greetings, curr) => {
 };
 const results = names.reduce(reducerone, startingValue);
 console.log(results);
+
+const numArray = [1, 2, [3, 5], [1, 2, [3, 4], 5], 6];
+
+const flattenArray = (data) => {
+  //initialValue
+  const initialValue = [];
+  return data.reduce((total, value) => {
+    return total.concat(Array.isArray(value) ? flattenArray(value) : value);
+  }, initialValue);
+};
+
+console.log(flattenArray(numArray));
+
+//changing object structure using reduce method
+//first - this is how to add a key and value to an object
+obj = {};
+obj["myname"] = "Gopesh Sharma";
+obj["myage"] = 55;
+console.log(obj);
+
+//now final example from digital ocean;
+//this is what server sends now
+const pokemon = [
+  { name: "charmander", type: "fire" },
+  { name: "squirtle", type: "water" },
+  { name: "bulbasaur", type: "grass" },
+];
+
+//this is what we can the server to send
+const pokemonModified = {
+  charmander: { type: "fire" },
+  squirtle: { type: "water" },
+  bulbasaur: { type: "grass" },
+};
+
+const getMapFromArray = (data) => {
+  return data.reduce((acc, item) => {
+    acc[item.name] = { type: item.type };
+    return acc;
+  }, {});
+};
+
+console.log(getMapFromArray(pokemon));
